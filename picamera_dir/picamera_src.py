@@ -1,8 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/pythoni
+#coding:utf-8
 import picamera
 import time
 import numpy as np
-import cv2
+#import cv2
 
 def record_video_by_picamera():
     camera = picamera.PiCamera()
@@ -25,9 +26,9 @@ def RGB_to_BGR_by_Numpy():
         print('rgb_to_bgr is exit')
         exit(0)
 
+    # 0: use CSI camera,1：use USB camera
 def python_opencv_test():
     print("OpenCV Version:{}".format(cv2.__version__))
-    # 0: use CSI camera,1：use USB camera
     cap = cv2.VideoCapture(0)
     if(not cap.isOpened()):
         print("can't open this camera")
