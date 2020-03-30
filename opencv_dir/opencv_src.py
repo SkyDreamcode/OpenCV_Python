@@ -64,6 +64,7 @@ def paint_test():
     cv2.putText(img=paint, text="Hello", org=(10, 250), fontFace=font, fontScale=2, color=(0, 0, 255),thickness=1, lineType=line)
 
     cv2.imshow('Paint', paint)
+    cv2.imwrite('paint.jpg', paint)
 
     cv2.waitKey(0)
 
