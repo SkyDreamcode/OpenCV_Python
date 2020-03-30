@@ -15,7 +15,11 @@ def main():
     #picamera_dir.picamera_basic_recipes.capturing_consistent_images()
     #opencv_dir.opencv_src.get_pixel_value()
     #opencv_dir.opencv_src.image_display_output()
-    opencv_dir.opencv_src.camera_video_show()
+    #opencv_dir.opencv_src.camera_video_show()
+    #opencv_dir.opencv_src.camera_save_to_local()
+    #opencv_dir.opencv_src.ROI_test()
+    opencv_dir.opencv_src.paint_test()
+    #opencv_dir.opencv_src.read_save_video()
     print('main func is end');
 
 main()
