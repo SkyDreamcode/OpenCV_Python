@@ -2,6 +2,82 @@
 import cv2
 import numpy as np
 
+value = (0, 0, 0)
+    
+canvas = np.zeros((300,300,3),np.uint8)
+
+def update(x):
+    global value
+    r_value = cv2.getTrackbarPos('R', 'iamge_win')
+    g_value = cv2.getTrackbarPos('G', 'iamge_win')
+    b_value = cv2.getTrackbarPos('B', 'iamge_win')
+
+    value = (r_value, g_value, b_value)
+    print('update value, value = {}'. format(value))
+    canvas[:,:]=value
+    cv2.imshow('image', canvas)
+    cv2.imwrite('gui.jpg', canvas)
+
+def high_gui_component():
+    cv2.namedWindow('image_win')
+
+    img = np.zeros((400,300,3), np.uint8)
+
+    def draw_point(event, x, y, flags, param):
+        if event == cv2.EVENT_LBUTTONDOWN:
+            cv2.circle(img,(x, y), 20, (255,0,0), -1)
+
+    cv2.setMouseCallback('image', draw_point)
+
+    while True:
+        cv2.imshow('image', img)
+        if(cv2.waitKey(1) == ord('q')):
+            break
+    
+    '''
+    cv2.createTrackbar('R', 'image_win', 0, 255, update)
+    cv2.createTrackbar('G', 'image_win', 0, 255, update)
+    cv2.createTrackbar('B', 'image_win', 0, 255, update)
+
+    cv2.setTrackbarPos('R', 'image_win', 125)
+    cv2.setTrackbarPos('G', 'image_win', 125)
+    cv2.setTrackbarPos('B', 'image_win', 125)
+    '''
+
+    #cv2.waitKey(0)
+
+    cv2.destroyAllWindows()
+    cv2.imwrite('high_gui.jpg', img)
+
+
+
+def on_mouse(event, x, y, flags, param):
+    if event == cv2.EVENT_MOUSEMOVE and flags == (cv2.EVENT_FLAG_LBUTTON|cv2.EVENT_FLAG_CTRLKEY):
+        print(x,y);print(event);print(flags)
+
+def mouse_test():
+    cv2.setMouseCallback('image', on_mouse)
+
+
+def image_compound():
+    img1 = cv2.imread('img11.jpg')
+    img2 = cv2.imread('img22.jpg')
+    
+    w_img1,h_img1 = img1.shape[:2]
+    w_img2,h_img2 = img2.shape[:2]
+
+    scale = w_img1 / w_img2 / 4
+    print("scale = ", scale)
+
+    img2 = cv2.resize(img2, (0,0), fx=0.25, fy=0.5)
+    w_img2,h_img2 = img2.shape[:2]
+
+    for c in range(0, 3):
+        img1[w_img1 - w_img2:, h_img1 - h_img2:, c]  = img2[:,:,c]
+
+    cv2.imwrite('new_img.jpg', img1)
+
+
 def ROI_test():
     img = cv2.imread('capture_file.jpg')
     

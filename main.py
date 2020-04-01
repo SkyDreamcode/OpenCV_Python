@@ -18,8 +18,11 @@ def main():
     #opencv_dir.opencv_src.camera_video_show()
     #opencv_dir.opencv_src.camera_save_to_local()
     #opencv_dir.opencv_src.ROI_test()
-    opencv_dir.opencv_src.paint_test()
+    #opencv_dir.opencv_src.paint_test()
+    #opencv_dir.opencv_src.image_compound()
+    #opencv_dir.opencv_src.mouse_test()
+    opencv_dir.opencv_src.high_gui_component()
+
     #opencv_dir.opencv_src.read_save_video()
     print('main func is end');
-
 main()
